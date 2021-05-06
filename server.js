@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const apiRoutes = require("./routes/api-routes");
 
-// middleware here
+// Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// API routes here
+// Define API routes here
 app.use("/api", apiRoutes);
 
 // Connect to MongoDB
@@ -30,11 +30,11 @@ mongoose.connect(
 );
 
 // Send every other request to the React app
-
+// Define any API routes before this runs
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}!`);
+  console.log(`The Server is running on port ${PORT}!`);
 });

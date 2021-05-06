@@ -3,7 +3,7 @@ import React from "react";
 function Nav() {
   return (
     <nav className="navbar navbar-expand navbar-dark bg-dark">
-      <a className="navbar-brand" href="/">The Book House</a>
+      <a className="navbar-brand" href="/">React Book Search</a>
 
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">

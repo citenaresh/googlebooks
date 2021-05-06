@@ -1,7 +1,7 @@
 {
-  "name": "googlebooksearch",
+  "name": "sel-roti",
   "version": "1.0.0",
-  "description": "Google Book search",
+  "description": "Mern Demo",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -9,9 +9,10 @@
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
-  "author": "Naresh raj Poudel",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^4.1.2",
@@ -22,7 +23,7 @@
     "bootswatch": "^4.5.2",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
-    "mongoose": "^5.9.28",
+    "mongoose": "^5.12.7",
     "react": "^16.13.1",
     "react-router-dom": "^5.2.0"
   }

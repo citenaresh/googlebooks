@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Row, Container } from "../components/Grid";
 import Button from "../components/Button";
 import { BookList, BookListItem } from "../components/BookList";
-import API from "../utils/API";
+import utilAPI from "../utils/API";
 
 class Search extends Component {
 
@@ -29,7 +29,7 @@ class Search extends Component {
 
   checkSavedDate = googleId => {
     for (let i in this.state.savedBooks) {
-      if (this.state.savedBooks[i].googleId === googleId) return API.getDate(this.state.savedBooks[i]._id);
+      if (this.state.savedBooks[i].googleId === googleId) return utilAPI.getDate(this.state.savedBooks[i]._id);
     }
     return null;
   }
@@ -39,7 +39,7 @@ class Search extends Component {
   }
 
   loadSavedBooks = () => {
-    API.getSavedBooks()
+    utilAPI.getSavedBooks()
       .then(res => {
         this.setState({ savedBooks: res.data });
       })
@@ -58,21 +58,21 @@ class Search extends Component {
       searched: this.state.bookSearch,
       bookSearch: ""
     });
-    API.getBooks(this.state.bookSearch)
+    utilAPI.getBooks(this.state.bookSearch)
       .then(res => this.setState({ books: res.data }, () => console.log(res.data)))
       .catch(err => console.log(err));
   };
 
   deleteSavedBook = (event, googleId) => {
     event.preventDefault();
-    API.deleteSavedBook(googleId)
+    utilAPI.deleteSavedBook(googleId)
       .then(res => this.loadSavedBooks())
       .catch(err => console.log(err));
   };
 
   handleSave = (event, googleId, title, authors, description, href, thumbnail) => {
     event.preventDefault();
-    API.saveBook({ googleId, title, authors, description, href, thumbnail })
+    utilAPI.saveBook({ googleId, title, authors, description, href, thumbnail })
       .then(res => this.loadSavedBooks());
   };
 
@@ -81,8 +81,8 @@ class Search extends Component {
       <Container>
         <Row>
           <div className="col rounded text-center bg-info mt-4 p-4">
-            <h1>The Book House</h1>
-            <h4>House for Searching for and saveing books of interest!</h4>
+            <h1>Library Builder</h1>
+            <h4>Search for and save books of interest!</h4>
           </div>
         </Row>
         <Row>
@@ -112,7 +112,7 @@ class Search extends Component {
               <h4>Results for {this.state.searched}</h4>
             )}
             {!this.state.books.length ? (
-              <h6 className="text-center">It is better to walk to nearby Library</h6>
+              <h6 className="text-center">No books to display currently</h6>
             ) : (
                 <BookList>
                   {this.state.books.map(book => {
