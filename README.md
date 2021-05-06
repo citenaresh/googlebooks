@@ -9,10 +9,10 @@ Created a book search app utilizing Node.js, Express.js, MongoDB, Heroku and Mon
 https://the-book-house.herokuapp.com/
 
 ## Images
-Image of main view:
+Image of Saved book view:
 ![Image of saved book on the app](./client/public/images/SavedBooks.png)
 
-Image of adding exercises:
+Image of Searching book:
 ![Image of searching a book](./client/public/images/SearchBook.png)
 
 ## Installation 
